@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,7 +11,13 @@ public class Main {
         }
 
         // 1) load character config from file
-        CharacterManager manager = new CharacterManager(args[0]);
+        CharacterManager manager = null;
+        try {
+            manager = new CharacterManager(args[0]);
+        } catch (FileNotFoundException e ) {
+            System.err.println("Could not find the provided character config file: " + args[0]);
+            System.exit(1);
+        }
         // 2) start REPl
         new REPL(manager).start();
     }
