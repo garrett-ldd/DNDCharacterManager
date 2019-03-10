@@ -2,14 +2,13 @@ package manager;
 
 import action.Action;
 import action.LongRest;
+import check.Check;
+import display.Display;
 import model.WeaponAttack;
 import model.Character;
 import model.Spell;
-import util.Dice;
-import util.Dnd;
 
 import java.io.FileNotFoundException;
-import java.util.Map;
 
 public class CharacterManager {
 
@@ -49,23 +48,29 @@ public class CharacterManager {
             boolean successful = action.execute(character);
             updateOrRollback(successful);
         } else if (command.equalsIgnoreCase("show")) {
-            if (commandTokens.length == 1) {
-                System.out.println(character);
-            } else if (commandTokens[1].equalsIgnoreCase("stats")) {
-                Map<String, Integer> scores = character.getAbilityScores();
-                for (String scoreName : character.getAbilityScores().keySet()) {
-                    System.out.println("\t" + scoreName + ": " + Dnd.abilityScoreToModifier(scores.get(scoreName)));
-                }
-            } else if (commandTokens[1].equalsIgnoreCase("skill")) {
-                System.out.println(Dnd.skillToModifier(character, commandTokens[2]));
-            } else {
-                System.out.println("Not implemented yet");
+            if (commandTokens.length < 2) {
+                System.out.println("Missing argument: information to show");
+                return;
             }
+            doDisplay(commandTokens);
         } else if (command.equalsIgnoreCase("check")) {
-            int result = Dice.roll(20) + Dnd.skillToModifier(character, commandTokens[1]);
-            System.out.println("result: " + result);
+            Check.check(character, commandTokens);
         } else {
             System.out.println("Unknown command");
+        }
+    }
+
+    private void doDisplay(String[] commandTokens) {
+        if (commandTokens[1].equalsIgnoreCase("stats")) {
+            Display.stats(character);
+        } else if (commandTokens[1].equalsIgnoreCase("skill")) {
+            if (commandTokens.length != 3) {
+                System.out.println("Invalid number of command args, should be 3");
+                return;
+            }
+            Display.skill(character, commandTokens[2]);
+        } else {
+            System.out.println("Unknown show command");
         }
     }
 

@@ -1,0 +1,10 @@
+- add to json:
+    - gold
+    - proficiencies
+    - items
+- add commands:
+    - generic roll command
+    - roll initiative
+- code fixes:
+    - separate args validation from command business logic
+    - create a generic way to define spell execution
