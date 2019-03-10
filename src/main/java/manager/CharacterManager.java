@@ -1,9 +1,10 @@
 package manager;
 
 import action.Action;
-import action.WeaponAttack;
+import action.LongRest;
+import model.WeaponAttack;
 import model.Character;
-import spell.Spell;
+import model.Spell;
 import util.Dice;
 import util.Dnd;
 
@@ -27,7 +28,15 @@ public class CharacterManager {
     public void dispatch(String[] commandTokens) {
         String command = commandTokens[0];
 
-        if (command.equalsIgnoreCase("act")) {
+        if (command.equalsIgnoreCase("help")) {
+            System.out.println("Usage:");
+            System.out.println("\thelp - prints usage");
+            System.out.println("\tact [weapon attack name | spell name | longrest] - performs character action");
+            System.out.println("\tshow [stats | skill] - print some piece of character info");
+            System.out.println("\tcheck [skill] - performs a skill check (i.e. perception) by rolling and adding the appropriate modifier");
+            System.out.println("\texit - exits the CLI");
+            System.out.println("\t");
+        } else if (command.equalsIgnoreCase("act")) {
             if (commandTokens.length < 2) {
                 System.out.println("Missing action name");
                 return;
@@ -55,13 +64,6 @@ public class CharacterManager {
         } else if (command.equalsIgnoreCase("check")) {
             int result = Dice.roll(20) + Dnd.skillToModifier(character, commandTokens[1]);
             System.out.println("result: " + result);
-        } else if (command.equalsIgnoreCase("longrest")) {
-            for (int spellLevel : character.getSpellSlots().keySet()) {
-                int max = character.getSpellSlots().get(spellLevel).getTotal();
-                character.getSpellSlots().get(spellLevel).setRemaining(max);
-            }
-            character.setHitPoints(character.getHitPointMax());
-            character.save();
         } else {
             System.out.println("Unknown command");
         }
@@ -77,6 +79,9 @@ public class CharacterManager {
             if (spell.getName().equalsIgnoreCase(tokens[1])) {
                 return spell;
             }
+        }
+        if (tokens[1].equalsIgnoreCase("longrest")) {
+            return new LongRest();
         }
         return null;
     }

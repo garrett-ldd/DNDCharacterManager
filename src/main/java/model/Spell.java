@@ -1,7 +1,6 @@
-package spell;
+package model;
 
 import action.Action;
-import model.Character;
 import util.Dice;
 import util.Resource;
 

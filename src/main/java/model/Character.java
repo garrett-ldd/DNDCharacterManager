@@ -1,9 +1,8 @@
 package model;
 
-import action.WeaponAttack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import spell.Spell;
+import util.Dnd;
 
 import java.io.*;
 import java.util.Map;
@@ -68,6 +67,10 @@ public class Character {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getProficiencyBonus() {
+        return Dnd.levelToProficiencyBonus(this.level);
     }
 
     public void setName(String name) {
