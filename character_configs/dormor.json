@@ -3,7 +3,32 @@
   "race": "Elf",
   "characterClass": "Sorcerer",
   "alignment": "Chaotic Neutral",
+  "size": "medium",
+  "age": 25,
   "level": 4,
+  "hitPoints": 27,
+  "hitPointMax": 27,
+  "armorClass": 15,
+  "speed": 30,
+  "remainingHitDie": 4,
+  "abilityScores": {
+    "charisma": 18,
+    "constitution": 14,
+    "dexterity": 14,
+    "wisdom": 11,
+    "intelligence": 8,
+    "strength": 6
+  },
+  "spellSlots": {
+    "1": {
+      "remaining": 4,
+      "total": 4
+    },
+    "2": {
+      "remaining": 3,
+      "total": 3
+    }
+  },
   "weaponAttacks": [
     {
       "name": "weapon-attack",
@@ -12,6 +37,21 @@
       "damageDice": {
         "6": 1
       }
+    }
+  ],
+  "spells": [
+    {
+      "name": "magic-missile",
+      "range": 120,
+      "description": "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4+1 force damage to its target. The darts all strike simultaneously and you can direct them to hit one creature or several.\n\nAt Higher Levels: When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot above 1st.",
+      "spellLevel": 1,
+      "damageType": "force",
+      "damageDice": [
+        4,
+        4,
+        4
+      ],
+      "additionalDamagePerRoll": 1
     }
   ]
 }

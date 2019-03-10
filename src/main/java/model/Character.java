@@ -3,15 +3,18 @@ package model;
 import action.WeaponAttack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import spell.Spell;
 
 import java.io.*;
-import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
  * Holds character state and provides functionality for reading/writing disk and parsing JSON.
  *
  * @author rzc
+ *
+ * TODO make this class abstract and subclass for different dnd classes
  */
 public class Character {
 
@@ -21,8 +24,18 @@ public class Character {
     private String race;
     private String characterClass;
     private String alignment;
+    private String size;
+    private int age;
     private int level;
+    private int hitPoints;
+    private int hitPointMax;
+    private int armorClass;
+    private int speed;
+    private int remainingHitDie;
+    private Map<String, Integer> abilityScores;
+    private Map<Integer, SpellSlot> spellSlots;
     private WeaponAttack[] weaponAttacks;
+    private Spell[] spells;
 
     public static Character loadFromDisk(String jsonCharacterFilePath) throws FileNotFoundException {
         // read file into memory
@@ -113,16 +126,87 @@ public class Character {
         this.weaponAttacks = weaponAttacks;
     }
 
-    @Override
-    public String toString() {
-        return "model.Character{" +
-                "configFileName='" + configFileName + '\'' +
-                ", name='" + name + '\'' +
-                ", race='" + race + '\'' +
-                ", characterClass='" + characterClass + '\'' +
-                ", alignment='" + alignment + '\'' +
-                ", level=" + level +
-                ", actions=" + Arrays.toString(weaponAttacks) +
-                '}';
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
+
+    public int getHitPointMax() {
+        return hitPointMax;
+    }
+
+    public void setHitPointMax(int hitPointMax) {
+        this.hitPointMax = hitPointMax;
+    }
+
+    public int getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(int armorClass) {
+        this.armorClass = armorClass;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getRemainingHitDie() {
+        return remainingHitDie;
+    }
+
+    public void setRemainingHitDie(int remainingHitDie) {
+        this.remainingHitDie = remainingHitDie;
+    }
+
+    public Map<String, Integer> getAbilityScores() {
+        return abilityScores;
+    }
+
+    public void setAbilityScores(Map<String, Integer> abilityScores) {
+        this.abilityScores = abilityScores;
+    }
+
+    public void setWeaponAttacks(WeaponAttack[] weaponAttacks) {
+        this.weaponAttacks = weaponAttacks;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Spell[] getSpells() {
+        return spells;
+    }
+
+    public void setSpells(Spell[] spells) {
+        this.spells = spells;
+    }
+
+    public Map<Integer, SpellSlot> getSpellSlots() {
+        return spellSlots;
+    }
+
+    public void setSpellSlots(Map<Integer, SpellSlot> spellSlots) {
+        this.spellSlots = spellSlots;
     }
 }

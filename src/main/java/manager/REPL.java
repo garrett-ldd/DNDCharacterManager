@@ -13,7 +13,7 @@ public class REPL {
     public void start() {
         boolean exit = false;
         while (!exit) {
-            System.out.print("character >> ");
+            System.out.print(manager.getCharacter().getName() + " >> ");
             String command = Resource.console().nextLine();
             exit = handleCommand(command);
         }

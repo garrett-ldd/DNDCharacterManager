@@ -11,6 +11,7 @@ public class WeaponAttack implements Action {
     private String name;
     private String weapon;
     private String damageType;
+    // TODO: make this a list
     private Map<Integer, Integer> damageDice; // i.e. d6 -> 2 (num rolls)
 
     public WeaponAttack(String name, String weapon, String damageType, Map<Integer, Integer> damageDice) {
@@ -42,9 +43,13 @@ public class WeaponAttack implements Action {
 
     private int rollDamage() {
         int totalDamage = 0;
+        int rollNumber = 0;
         for (int die : this.damageDice.keySet()) {
             for (int i = 0; i < damageDice.get(die); i++) {
-                totalDamage += Dice.roll(die);
+                rollNumber++;
+                int dmg = Dice.roll(die);
+                System.out.println("Roll #" + rollNumber + ": " + dmg);
+                totalDamage += dmg;
             }
         }
         return totalDamage;

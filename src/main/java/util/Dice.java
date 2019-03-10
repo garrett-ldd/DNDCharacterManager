@@ -9,4 +9,13 @@ public class Dice {
     public static int roll(int numSides) {
         return random.nextInt(numSides) + 1;
     }
+
+    public static int rollAdvantage(int numSides) {
+        return Math.max(roll(numSides), roll(numSides));
+    }
+
+    public static int rollDisadvantage(int numSides) {
+        return Math.min(roll(numSides), roll(numSides));
+    }
+
 }
