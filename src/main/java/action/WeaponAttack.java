@@ -1,3 +1,9 @@
+package action;
+
+import model.Character;
+import util.Dice;
+import util.Resource;
+
 import java.util.Map;
 
 public class WeaponAttack implements Action {
@@ -46,7 +52,7 @@ public class WeaponAttack implements Action {
 
     @Override
     public String toString() {
-        return "WeaponAttack{" +
+        return "action.WeaponAttack{" +
                 "weapon='" + weapon + '\'' +
                 ", damageType='" + damageType + '\'' +
                 ", damageDice=" + damageDice +

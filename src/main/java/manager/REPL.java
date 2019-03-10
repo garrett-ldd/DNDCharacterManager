@@ -1,4 +1,6 @@
-import java.util.Scanner;
+package manager;
+
+import util.Resource;
 
 public class REPL {
 

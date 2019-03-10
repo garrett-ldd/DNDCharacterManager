@@ -6,7 +6,7 @@
   "level": 4,
   "weaponAttacks": [
     {
-      "name": "weapon",
+      "name": "weapon-attack",
       "weapon": "quarterstaff",
       "damageType": "bludgeoning",
       "damageDice": {

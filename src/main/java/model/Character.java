@@ -1,3 +1,6 @@
+package model;
+
+import action.WeaponAttack;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,9 +41,6 @@ public class Character {
         } catch (Exception e) {
             System.err.println("Exception parsing character file: " + e.getMessage());
         }
-
-        // debugging
-        System.out.println(character);
 
         return character;
     }
@@ -115,7 +115,7 @@ public class Character {
 
     @Override
     public String toString() {
-        return "Character{" +
+        return "model.Character{" +
                 "configFileName='" + configFileName + '\'' +
                 ", name='" + name + '\'' +
                 ", race='" + race + '\'' +

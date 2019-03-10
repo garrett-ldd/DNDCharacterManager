@@ -1,3 +1,6 @@
+import manager.CharacterManager;
+import manager.REPL;
+
 import java.io.FileNotFoundException;
 
 public class Main {
@@ -10,7 +13,7 @@ public class Main {
             System.exit(1);
         }
 
-        // 1) load character config from file
+        // load character config from file
         CharacterManager manager = null;
         try {
             manager = new CharacterManager(args[0]);
@@ -18,7 +21,7 @@ public class Main {
             System.err.println("Could not find the provided character config file: " + args[0]);
             System.exit(1);
         }
-        // 2) start REPl
+        // start REPl
         new REPL(manager).start();
 
         System.out.println("Thanks for playing :)");
