@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,11 @@ public class Character {
     private transient String configFileName;
 
     private String name;
+    private String race;
+    private String characterClass;
+    private String alignment;
+    private int level;
+    private WeaponAttack[] weaponAttacks;
 
     public static Character loadFromDisk(String jsonCharacterFilePath) throws FileNotFoundException {
         // read file into memory
@@ -32,13 +38,16 @@ public class Character {
         } catch (Exception e) {
             System.err.println("Exception parsing character file: " + e.getMessage());
         }
+
+        // debugging
+        System.out.println(character);
+
         return character;
     }
 
     public void save() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(this);
-        System.out.println("json: " + json);
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(configFileName));
             writer.write(json);
@@ -52,4 +61,68 @@ public class Character {
         this.name = name;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getConfigFileName() {
+        return configFileName;
+    }
+
+    public void setConfigFileName(String configFileName) {
+        this.configFileName = configFileName;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public String getCharacterClass() {
+        return characterClass;
+    }
+
+    public void setCharacterClass(String characterClass) {
+        this.characterClass = characterClass;
+    }
+
+    public String getAlignment() {
+        return alignment;
+    }
+
+    public void setAlignment(String alignment) {
+        this.alignment = alignment;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public WeaponAttack[] getWeaponAttacks() {
+        return weaponAttacks;
+    }
+
+    public void setActions(WeaponAttack[] weaponAttacks) {
+        this.weaponAttacks = weaponAttacks;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "configFileName='" + configFileName + '\'' +
+                ", name='" + name + '\'' +
+                ", race='" + race + '\'' +
+                ", characterClass='" + characterClass + '\'' +
+                ", alignment='" + alignment + '\'' +
+                ", level=" + level +
+                ", actions=" + Arrays.toString(weaponAttacks) +
+                '}';
+    }
 }

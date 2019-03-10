@@ -4,28 +4,29 @@ public class REPL {
 
     private CharacterManager manager;
 
-    private Scanner scanner;
-
     public REPL(CharacterManager manager) {
         this.manager = manager;
-        this.scanner = new Scanner(System.in);
     }
 
     public void start() {
-        while (true) {
+        boolean exit = false;
+        while (!exit) {
             System.out.print("character >> ");
-            String command = scanner.nextLine();
-            handleCommand(command);
+            String command = Resource.console().nextLine();
+            exit = handleCommand(command);
         }
     }
 
-    private void handleCommand(String command) {
+    private boolean handleCommand(String command) {
         command = command.trim().toLowerCase();
         if (command.isEmpty()) {
-            return;
+            return false;
         }
-
+        if (command.equals("exit")) {
+            return true;
+        }
         manager.dispatch(command.split("\\s+"));
+        return false;
     }
 
 }

@@ -20,5 +20,7 @@ public class Main {
         }
         // 2) start REPl
         new REPL(manager).start();
+
+        System.out.println("Thanks for playing :)");
     }
 }

@@ -1,3 +1,17 @@
 {
-  "name": "Dormor Moonnectar"
+  "name": "Dormor Moonnectar",
+  "race": "Elf",
+  "characterClass": "Sorcerer",
+  "alignment": "Chaotic Neutral",
+  "level": 4,
+  "weaponAttacks": [
+    {
+      "name": "weapon",
+      "weapon": "quarterstaff",
+      "damageType": "bludgeoning",
+      "damageDice": {
+        "6": 1
+      }
+    }
+  ]
 }
