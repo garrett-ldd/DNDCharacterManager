@@ -44,6 +44,12 @@ Thanks for playing :)
 #### Run
 - java 8
 
+## Usage Instructions
+```
+# start the CLI using the dormor.json example character config
+java -jar bin/DNDCharacterManager-1.0-SNAPSHOT-all.jar character_configs/dormor.json
+```
+
 ## TODO
 - add to character model:
     - gold
