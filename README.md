@@ -37,8 +37,14 @@ Thanks for playing :)
 - easy to understand json character config files
 - easy to understand code that is easy to customize
 
-### TODO
+## Requirements
+#### Build
+- gradle 5.0+
+- java 8
+#### Run
+- java 8
 
+## TODO
 - add to character model:
     - gold
     - proficiencies
